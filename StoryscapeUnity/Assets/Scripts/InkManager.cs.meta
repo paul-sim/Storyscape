@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e1d50080f6ccc4421b994c9eba07f7d7
+timeCreated: 1523862575
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inkJSONAsset: {instanceID: 0}
+  - canvas: {instanceID: 0}
+  - textPrefab: {instanceID: 0}
+  - buttonPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
