@@ -273,7 +273,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491254, guid: b81151bc8b352446891e10bd64471525, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 16.875
       objectReference: {fileID: 0}
     - target: {fileID: 22491254, guid: b81151bc8b352446891e10bd64471525, type: 2}
       propertyPath: m_LocalPosition.z
@@ -887,7 +887,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 10
+  m_Spacing: 3.75
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -990,7 +990,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22481992, guid: 8e59c00a6ba9b41f5b7287d8c466e188, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20
+      value: -16.875
       objectReference: {fileID: 0}
     - target: {fileID: 22481992, guid: 8e59c00a6ba9b41f5b7287d8c466e188, type: 2}
       propertyPath: m_LocalPosition.z

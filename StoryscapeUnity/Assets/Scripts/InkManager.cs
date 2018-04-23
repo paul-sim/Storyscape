@@ -62,8 +62,10 @@ public class InkManager : MonoBehaviour {
 			}
 			// CreateContentView (text);
 			StartCoroutine (textWait (seconds, text)); // this coroutine will eventually call CreateContentView
-			StartCoroutine (choicesWait (seconds));
+			// StartCoroutine (choicesWait (seconds));
 		}
+
+		StartCoroutine (choicesWait (seconds));
 		/*
 		if (story.currentChoices.Count == 0) {
 			Button choice = CreateChoiceView("Continue");
