@@ -4,12 +4,12 @@ EXTERNAL playMusic(music)
 // # wait3sec
 // {playSfx("getting up")}
 
-// -> Intro
--> FirstTimeMainJunction
+-> Intro
+// -> FirstTimeMainJunction
 
 === Intro
 * [\[pull yourself up\]]
-    // # wait3sec
+    // # wait1sec
     - Sharp, centralized pain in the back of the head.
     ** [continue]
     - Lazer-like ringing between the ears. A dull, bobbing sensation.
@@ -25,7 +25,7 @@ EXTERNAL playMusic(music)
     ** [continue] */
     - Head up. Breathe.
     ** [continue]
-    // # wait3sec
+    // # wait1sec
     - Slowly, the senses come online.
     ** [\[look around\]]
 -> FirstTimeMainJunction
@@ -39,40 +39,31 @@ EXTERNAL playMusic(music)
 === FirstTimeMainJunction
 - Enclosed in a small room. Never seen this place.
 A wooden desk in plain sight.
-* [\[approach the wooden desk\]] -> WoodenDeskTop
-* [\[turn left\]] -> MainJunctionWest
-* [\[turn right\]] -> MainJunctionEast
++ [\[approach the wooden desk\]] -> WoodenDeskTop
++ [\[turn right\]] -> MainJunctionEast
++ [\[turn left\]] -> MainJunctionSouth
 -> DONE
 
 
 /*** main junctions. main loop ***/
 === MainJunctionNorth
 - A wooden desk in plain sight.
-* [\[approach the wooden desk\]]
-* [\[turn left\]] -> MainJunctionWest
-* [\[turn right\]] -> MainJunctionEast
++ [\[approach the wooden desk\]] -> WoodenDeskTop
++ [\[turn right\]] -> MainJunctionEast
++ [\[turn left\]] -> MainJunctionSouth
 -> DONE
 
 === MainJunctionEast
-- A dull hanging stench. A white wall.
-* [\[step forward\]]
-* [\[turn left\]] -> MainJunctionNorth
-* [\[turn right\]] -> MainJunctionSouth
--> DONE
+- A door and a keypad.
++ [\[try keypad\]] -> Keypad
++ [\[turn right\]] -> MainJunctionSouth
++ [\[turn left\]] -> MainJunctionNorth
 
 === MainJunctionSouth
-- A pile of worn clothes. A door.
-* [\[pick up clothes\]]
-* [\[try door\]] // get insert key option later
-* [\[turn left\]] -> MainJunctionEast
-* [\[turn right\]] -> MainJunctionWest
--> DONE
-
-=== MainJunctionWest
-- An opened sports bag.
-* [\[search the bag\]]
-* [\[turn left\]] -> MainJunctionSouth
-* [\[turn right\]] -> MainJunctionNorth
+- A dull hanging stench. A white wall.
++ [\[examine the wall\]] -> WallExamine
++ [\[turn right\]] -> MainJunctionNorth
++ [\[turn left\]] -> MainJunctionEast
 -> DONE
 /*** end of main junctions ***/
 
@@ -80,25 +71,136 @@ A wooden desk in plain sight.
 /*** north junction ***/
 === WoodenDeskTop
 - A handwritten note rests on the desk's surface.
-* [\[read the note\]] -> ReadNote
-* [\[search the drawers\]] -> MainJunctionSouth
-* [\[step back\]] -> MainJunctionNorth
++ [\[read the note\]] -> ReadNote
++ [\[search the drawers\]] -> InsideDrawers
++ [\[step back\]] -> MainJunctionNorth
 -> DONE
 
 === ReadNote
 - "It's odd. When I was a child, I thought I could do everything.
     I had dreams.
     I had goals."
-* [continue]
++ [continue]
 - "Then I grew up, and only a few things mattered.
-    Early on, it was my career. Then it was my family."
-* [continue]
-- "Now it's a search for truth.
-    What is the meaning of all this.
-    I'm sorry, but I have to do this."
+    I loved my family. I still do."
++ [continue]
+- "And for that, I must do what's best for them."
++ [continue]
 -> WoodenDeskTop
+-> DONE
+
+=== InsideDrawers
+- "A remote for a light switch. A bottle of painkillers." <>
+* [pick up remote] -> remote_option
++ [examine bottle of painkillers] -> ExaminePainkillers
++ [close drawer] -> WoodenDeskTop 
+-> DONE
+
+=== remote_option
+-> InsideDrawers
+-> DONE
+
+=== ExaminePainkillers
+- A high dosage. Bottle is empty.
++ [continue]
+-> InsideDrawers
 -> DONE
 /*** end of north junction ***/
 
+
+/*** south junction ***/
+=== WallExamine
+- A repulsive odor from the wall. So much stronger now.
++ [\[step back\]] -> MainJunctionSouth
+* {remote_option} [\[Kill lights with remote\]] -> WallMessage
+-> DONE
+
+=== WallMessage
+// # hit_lights
+- A bright glowy message plastered on the wall.
+* [continue]
+- "I do this with love.
+    Let's set sail together."
+* [continue]
+- A flash of fleeting memory.
+* [continue]
+# wait1sec
+- A boy.
+    A girl.
+    A look of terror on their faces.
+* [continue]
+- Another flashback.
+* [continue]
+# wait1sec
+- The code. 3142.
+* [continue]
+- An overwhelming feeling of apprehension.
+    Must leave this place.
+* [step back] -> MainJunctionSouth
+-> DONE
+/*** end of south junction ***/
+
+
+/*** east junction ***/
+=== Keypad
+-
++ [1] -> KeypadWrong
++ [2] -> KeypadWrong
++ [3] -> KeypadCorrect1
++ [4] -> KeypadWrong
++ [step back] ->MainJunctionEast
+-> DONE
+
+=== KeypadCorrect1
+-
++ [1] -> KeypadCorrect2
++ [2] -> KeypadWrong
++ [3] -> KeypadWrong
++ [4] -> KeypadWrong
++ [step back] ->MainJunctionEast
+-> DONE
+
+=== KeypadCorrect2
+-
++ [1] -> KeypadWrong
++ [2] -> KeypadWrong
++ [3] -> KeypadWrong
++ [4] -> KeypadCorrect3
++ [step back] ->MainJunctionEast
+-> DONE
+
+=== KeypadCorrect3
+-
++ [1] -> KeypadWrong
++ [2] -> KeypadCorrect4
++ [3] -> KeypadWrong
++ [4] -> KeypadWrong
++ [step back] ->MainJunctionEast
+-> DONE
+
+=== KeypadWrong
+-
++ [1] -> KeypadWrong
++ [2] -> KeypadWrong
++ [3] -> KeypadWrong
++ [4] -> KeypadWrong
++ [step back] ->MainJunctionEast
+-> DONE
+
+=== KeypadCorrect4
+- A subtle clicking noise.
+    The door swings open.
+* [continue]
+- So dark. Pitch black in the connected space.
+* [continue]
+- A feeling I will wake from this.
+    I wish I could just sleep.
+* [continue]
+# wait1sec
+-
+* [\[walk through door\]]
+-> DONE
+
+/*** end of east junction ***/
 
 

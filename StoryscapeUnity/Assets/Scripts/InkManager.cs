@@ -55,6 +55,9 @@ public class InkManager : MonoBehaviour {
 			foreach (string str in tempTags) {
 				switch (str)
 				{
+				case "wait1sec":
+					seconds = 1;
+					break;
 				case "wait3sec":
 					seconds = 3;
 					break;
